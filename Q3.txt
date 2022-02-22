@@ -1,0 +1,3 @@
+At first, I created a solution for the depth of the
+tree, because I lost some words in the sentence 'this 
+path may or may not pass through the root'.
