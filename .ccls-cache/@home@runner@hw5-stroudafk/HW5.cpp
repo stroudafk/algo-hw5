@@ -71,22 +71,25 @@ bool addWord(TreeNode<char>* dict, std::string word) {
           if(child->getValue() == '$'){
             return false;
           }
-          else{
-            subDict->getChildren().push_back(new TreeNode<char>('$'));
-            return true;
-          }
         }
-        return false;
+        //if the word is already in there but not counted as a 
+        //valid word, does it get returned as true or false?
+        subDict->getChildren().push_back(new TreeNode<char>('$'));
+        return true;
       }
       else{
         return addWord(subDict, word.substr(1, word.length()-1));
       }
     }
     else{
+      TreeNode<char>* subDict;
       for(auto insertion : word){
-        dict->getChildren().push_back(new TreeNode<char>(insertion));
+        subDict = new TreeNode<char>(insertion);
+        dict->getChildren().push_back(subDict);
+        dict = subDict;
       }
       dict->getChildren().push_back(new TreeNode<char>('$'));
+      std::cout << "test" << std::endl;
       return true;
     }
   }
