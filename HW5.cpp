@@ -26,7 +26,7 @@ bool isValidWord(TreeNode<char>* dict, std::string word) {
     if(letter->getValue() == word[0]){
       if(word.length() == 1){
         for (auto it : letter->getChildren()){
-          if(it->getValue() == '$'){
+          if(it->getValue() == '$'){ //could replace this with 'isLeaf()'
             return true;
           }
         }
@@ -46,7 +46,49 @@ bool isValidWord(TreeNode<char>* dict, std::string word) {
  * How did you approach the problem?
  * Why does your code work?
  *
- */
+if the word is only one letter, check if the letter exists
+in the given subdictionary
+  a) if there is a subdictionary whose root value is equal
+  to the length 1 string (or: last letter of the word)
+    i) if it contains a child whose value is '$'
+      - return false
+    ii) if it does not contain a child whose value is '$'
+      - signify the end of a letter by adding a terminating char
+      - and return true
+
+if the word length is > 1 
+  a) if the first letter of the addendum word already exists, 
+  recurse on the remaining letters
+  
+  b) if not, add the letters which do not exist
+
+*/
 bool addWord(TreeNode<char>* dict, std::string word) {
-  throw std::logic_error("not implemented");
+  for(auto subDict : dict->getChildren()){
+    if(subDict->getValue() == word[0]){
+      if(word.length() == 1){
+        for(auto child : subDict->getChildren()){
+          if(child->getValue() == '$'){
+            return false;
+          }
+          else{
+            subDict->getChildren().push_back(new TreeNode<char>('$'));
+            return true;
+          }
+        }
+        return false;
+      }
+      else{
+        return addWord(subDict, word.substr(1, word.length()-1));
+      }
+    }
+    else{
+      for(auto insertion : word){
+        dict->getChildren().push_back(new TreeNode<char>(insertion));
+      }
+      dict->getChildren().push_back(new TreeNode<char>('$'));
+      return true;
+    }
+  }
+  return false;
 }
