@@ -20,27 +20,6 @@ b) else if the word length is > 1, and more letters other than
 '$' exist
   - then recurse on the remaining letters of your word and
   the dictionary
-
------------------------
-Check if the first letter of your word exists in the children
-of the given dictionary. If the letter is not found, return 
-false.
-
-
-i) there are more letters to check in the word
-  a) and there are more subsequent letters existing in the 
-    dictionary
-    (so far so good - cannot conclude the word is or is not 
-    valid)
-    - then recurse again
-
-return isValidWord(letter, word.substr(1, word.length()-1));
-
-  b) there are not more letters in the sub-dictionary
-    (elaborated: if there are more letters in the word than 
-    there are in the given dictionary, the word cannot be 
-    valid)
-    - return false
  */
 bool isValidWord(TreeNode<char>* dict, std::string word) {
   for(auto letter : dict->getChildren()){
