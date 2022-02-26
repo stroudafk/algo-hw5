@@ -89,7 +89,6 @@ bool addWord(TreeNode<char>* dict, std::string word) {
         dict = subDict;
       }
       dict->getChildren().push_back(new TreeNode<char>('$'));
-      std::cout << "test" << std::endl;
       return true;
     }
   }

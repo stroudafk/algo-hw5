@@ -8,3 +8,5 @@ bool isValidWord(TreeNode<char>* dict, std::string word);
 
 // Q2
 bool addWord(TreeNode<char>* dict, std::string word);
+
+
