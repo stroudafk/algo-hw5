@@ -1,0 +1,13 @@
+Q4.A
+10-12
+
+Q4.B
+I actually created several iterations of addWord that didn't
+successfully add the word in the correct spot, but had the
+other areas done correctly, but was having trouble narrowing 
+down the problem, and as a result it took me ~6.5 hours to get
+a working version. I was having trouble focusing and all the
+ifs and loops probably didn't help, plus N-ary trees are 
+probably the data structure I'm least familiar with. I
+don't think the time I spent on the assignment is an 
+accurate reflection of the difficulty level.

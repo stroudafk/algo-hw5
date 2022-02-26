@@ -68,7 +68,6 @@ bool isValidWord(TreeNode<char>* dict, std::string word) {
 */
 
 bool addWord(TreeNode<char>* dict, std::string word) {
-  TreeNode<char>* found;
   for(auto child : dict->getChildren()){ 
     if(word[0] == child->getValue()){
       //lines 56-62 are for when the word is already in there
@@ -80,6 +79,9 @@ bool addWord(TreeNode<char>* dict, std::string word) {
         }
       }
       return addWord(child, word.substr(1, word.length()-1));
+    }
+    else if(word == "" && child->getValue() == '$'){
+      return false;
     }
   }
   TreeNode<char>* temp;
