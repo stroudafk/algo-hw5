@@ -1,5 +1,4 @@
 #include "HW5.h"
-
   
 /*
  * Add your key ideas to this comment.
@@ -23,17 +22,17 @@ b) else if the word length is > 1, and more letters other than
 
  */
 bool isValidWord(TreeNode<char>* dict, std::string word) {
-  for(auto letter : dict->getChildren()){
-    if(letter->getValue() == word[0]){
-      if(word.length() == 1){
-        for (auto it : letter->getChildren()){
-          if(it->getValue() == '$'){ //could replace this with 'isLeaf()'
+  for (auto letter : dict->getChildren()) {
+    if (letter->getValue() == word[0]) {
+      if (word.length() == 1) {
+        for (auto it : letter->getChildren()) {
+          if (it->getValue() == '$') { 
             return true;
           }
         }
         return false;
       }
-      else{
+      else {
         return isValidWord(letter, word.substr(1,word.length()-1));
       }
     }
@@ -68,24 +67,25 @@ bool isValidWord(TreeNode<char>* dict, std::string word) {
 */
 
 bool addWord(TreeNode<char>* dict, std::string word) {
-  for(auto child : dict->getChildren()){ 
-    if(word[0] == child->getValue()){
+  for (auto child : dict->getChildren()) { 
+    if (word[0] == child->getValue()) {
       //lines 56-62 are for when the word is already in there
-      if(word.length() == 1){
-        for(auto grandchild : child->getChildren()){
-          if(grandchild->getValue() == '$'){
+      if (word.length() == 1) {
+        for (auto grandchild : child->getChildren()) {
+          if (grandchild->getValue() == '$') {
             return false;
           }
         }
       }
       return addWord(child, word.substr(1, word.length()-1));
     }
-    else if(word == "" && child->getValue() == '$'){
+    else if (word == "" && child->getValue() == '$') {
       return false;
     }
   }
+  
   TreeNode<char>* temp;
-  for(int i=0; i<word.length(); i++){
+  for (int i=0; i<word.length(); i++) {
     temp = new TreeNode<char>(word[i]);
     dict->getChildren().push_back(temp);
     dict = temp;
@@ -95,20 +95,20 @@ bool addWord(TreeNode<char>* dict, std::string word) {
 }
 
 void printTree(TreeNode<char>* root, int depth = 0){
-  if(!root){
+  if (!root) {
     return;
   }
-  for(int i=1; i<depth; i++){
+  for (int i = 1; i < depth; i++) {
     std::cout << "    ";
   }
-  if(!depth){
+  if (!depth) {
     std::cout << root->getValue() << "\n";
   }
-  else{
+  else {
     std::cout << "+---" << root->getValue() << "\n";
   }
-  for(auto child : root->getChildren()){
-    printTree(child, depth+1);
+  for (auto child : root->getChildren()) {
+    printTree(child, depth + 1);
   }
 }
 

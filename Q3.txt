@@ -1,3 +1,39 @@
+
+Q3.A
+
+           x 
+        /     \
+       x       x
+     /  \     /  \
+    x    x   x    x
+                /   \
+               x     x
+              /
+             x
+
+Expected output: 2 + 4 = 6
+
+Q3.B
 At first, I created a solution for the depth of the
 tree, because I lost some words in the sentence 'this 
 path may or may not pass through the root'.
+
+Then, I was able to break it down into subtrees to sort out
+the recursion. The diameter of a tree is the height of the
+left + height of the right subtrees. To determine the
+longest path between two nodes, I'd compare the maximum 
+diameter recorded so far to the sum of the left and right
+subtree heights. Then update my diameter to take the largest, 
+and return the height of this subtree/at this node.
+
+Q3.C
+The worst case time complexity is O(N) (where n is the number
+of nodes). My implementation uses depth first search, so the
+maximum pending calls at any one time is possible to be n, if
+the height of the tree is equal to the number of nodes.
+
+Worst case space complexity is also O(N), because each node is
+only visited once, so the work done in each recursive call which
+is constant, happens N times. N times a constant is reduced/simplified
+to N.
+

@@ -35,7 +35,6 @@ TreeNode<char>* makeTrieExample1() {
               new TreeNode<char>('$')})})})});
 }
 
-//TODO: remove extra test cases later
 TreeNode<char>* makeTrieExample2() {
   return new TreeNode<char>(
     '*', {
